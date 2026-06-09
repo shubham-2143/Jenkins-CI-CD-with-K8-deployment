@@ -1,0 +1,15 @@
+apiVersin: v1
+kind: service
+metadata:
+  name: lb
+  label:
+    app: uber
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetport: 80
+    protocol: tcp
+  selector:
+    app: uber  
+
