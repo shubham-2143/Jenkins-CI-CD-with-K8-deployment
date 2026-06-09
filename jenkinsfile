@@ -70,10 +70,10 @@ pipeline {
         stage('Deploy to EKS') {
             steps {
                 sh '''
-                sed -i 's|IMAGE_URI|'"$ACCOUNT_ID"'.dkr.ecr.'"$AWS_REGION"'.amazonaws.com/'"$ECR_REPO"':'"$IMAGE_TAG"'|g' k8s/deploy.yml
+                sed -i 's|IMAGE_URI|'"$ACCOUNT_ID"'.dkr.ecr.'"$AWS_REGION"'.amazonaws.com/'"$ECR_REPO"':'"$IMAGE_TAG"'|g' K8-manifests/deploy.yml
 
-                kubectl apply -f k8s/deploy.yml
-                kubectl apply -f k8s/service.yml
+                kubectl apply -f K8-manifests/deploy.yml
+                kubectl apply -f K8-manifests/service.yml
                 '''
             }
         }
